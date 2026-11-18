@@ -5,5 +5,9 @@ services:
       - "8000:8000"
     volumes:
       - ./app:/app/app
+      - data:/app/data
     environment:
       - SECRET_KEY=dev-secret-change-in-prod
+
+volumes:
+  data:

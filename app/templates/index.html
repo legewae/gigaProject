@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}MiniWiki — Все страницы{% endblock %}
+
+{% block content %}
+<h1>Все страницы</h1>
+{% if pages %}
+<table>
+    <thead>
+        <tr>
+            <th>Путь</th>
+            <th>Заголовок</th>
+            <th>Обновлена</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for page in pages %}
+        <tr>
+            <td><a href="/pages{{ page.path }}">{{ page.path }}</a></td>
+            <td>{{ page.title }}</td>
+            <td>{{ page.updated_at|format_datetime }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Страниц пока нет. <a href="/pages/new">Создайте первую</a>.</p>
+{% endif %}
+{% endblock %}
